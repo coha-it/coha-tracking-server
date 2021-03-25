@@ -18,5 +18,6 @@ $db->exec("CREATE TABLE IF NOT EXISTS $tblname(
     _username TEXT NULL,
     _userid TEXT NULL,
     _timestamp DATE DEFAULT (datetime('now','localtime')),
+    _last_ping DATE DEFAULT (datetime('now','localtime')),
     _ip TEXT NULL
 )");
