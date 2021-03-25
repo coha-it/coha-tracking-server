@@ -1,4 +1,4 @@
 <?php
 
-echo "tracking server"
+echo "tracking server";
 
