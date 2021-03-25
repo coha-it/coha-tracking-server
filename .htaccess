@@ -1,0 +1,4 @@
+# Debug testing
+# Access-Control-Allow-Headers: *
+
+Header set Access-Control-Allow-Origin "*"
