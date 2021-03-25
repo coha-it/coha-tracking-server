@@ -8,8 +8,13 @@ client
 
 */
 
-include(__DIR__.'/settings.php');
-include(__DIR__.'/functions.php');
+include(__DIR__.'/scripts/settings.php');
+include(__DIR__.'/scripts/functions.php');
+
+// Check Request
+if (!$_REQUEST) {
+    return true;
+}
 
 // Variables
 $_href      = $_REQUEST['_href'] ?? '';

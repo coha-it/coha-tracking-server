@@ -5,7 +5,7 @@ server: (check pw)
 _href, _type (open, close), timestamp, agent, username, userid, ip
 */
 
-include('../settings.php');
+include(__DIR__.'/settings.php');
 
 // _timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
 
