@@ -65,6 +65,7 @@ switch ($_type) {
                 _username,
                 _userid,
                 _timestamp,
+		_last_ping,
                 _ip
             ) VALUES (
                 '$_href', 
@@ -73,6 +74,7 @@ switch ($_type) {
                 '$_username',
                 '$_userid',
                 '$_timestamp',
+		'$_timestamp',
                 '$_ip'
             )"
         );
