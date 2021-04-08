@@ -8,8 +8,18 @@ client
 
 */
 
-include(__DIR__.'/scripts/settings.php');
-include(__DIR__.'/scripts/functions.php');
+function getIp () {
+    $ip = '';
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
 
 // Check Request
 if (!$_REQUEST) {
@@ -25,11 +35,23 @@ $_userid    = $_REQUEST['_userid'] ?? '';
 $_timestamp = date('Y-m-d H:i:s');
 $_ip        = getIp();
 
-function my_time() {
-    return localtime();
-}
 
-$my_time = 'my_time';
+// Create Table if not exist
+// Create DB if it doesn't exist
+$db = new SQLite3(__DIR__.'/storage/database24122314.sqlite');
+$tblname = 'tracker';
+
+$db->exec("CREATE TABLE IF NOT EXISTS $tblname(
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    _href TEXT NULL,
+    _type VARCHAR(6),
+    _agent TEXT NULL,
+    _username TEXT NULL,
+    _userid TEXT NULL,
+    _timestamp DATE DEFAULT (datetime('now','localtime')),
+    _last_ping DATE DEFAULT (datetime('now','localtime')),
+    _ip TEXT NULL
+)");
 
 // If Type is Open:
 switch ($_type) {
