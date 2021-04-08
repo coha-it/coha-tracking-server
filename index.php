@@ -57,15 +57,15 @@ switch ($_type) {
         break;
 
     case 'ping':
-        echo "jo last ping set";
+        // echo "jo last ping set";
         $db->exec(
-            "UPDATE $tblname 
+            "UPDATE $tblname
             SET _last_ping = '$_timestamp'
             WHERE _userid = '$_userid'
             AND _username = '$_username';"
         );
         break;
-    
+
     default:
         # code...
         break;
